@@ -3,32 +3,39 @@ import Link from 'next/link';
 
 export default function PostDetail({ post }) {
   if (!post) {
-    return <div>❌ Post not found.</div>;
+    return <div className="text-center mt-10 text-red-500">❌ Post not found.</div>;
   }
 
   return (
-    <main style={{ maxWidth: '720px', margin: '0 auto', padding: '2rem' }}>
-      <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>{post.name}</h1>
+    <main className="max-w-3xl mx-auto px-6 py-12">
+      <article className="space-y-6">
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white">{post.name}</h1>
 
-      <img
-        src={post.imageUrl}
-        alt={post.name}
-        style={{ width: '100%', borderRadius: '8px', marginBottom: '1rem' }}
-        onError={(e) => {
-          e.target.onerror = null;
-          e.target.src = 'https://via.placeholder.com/600x400?text=No+Image';
-        }}
-      />
+        <img
+          src={post.imageUrl}
+          alt={post.name}
+          className="w-full rounded-lg border border-gray-300 dark:border-gray-700"
+          onError={(e) => {
+            e.target.onerror = null;
+            e.target.src = 'https://via.placeholder.com/600x400?text=No+Image';
+          }}
+        />
 
-      <p style={{ fontSize: '0.9rem', color: '#666' }}>
-        By Unknown on {post.formattedDate}
-      </p>
+        <p className="text-sm text-gray-500 dark:text-gray-400">
+          By Unknown on <time>{post.formattedDate}</time>
+        </p>
 
-      <p style={{ marginTop: '1rem' }}>{post.content}</p>
+        <div className="prose prose-gray dark:prose-invert max-w-none">
+          <p>{post.content}</p>
+        </div>
 
-      <Link href="/" style={{ display: 'inline-block', marginTop: '2rem', color: '#0070f3' }}>
-        ← Back to Home
-      </Link>
+        <Link
+          href="/"
+          className="inline-block mt-8 text-blue-600 dark:text-blue-400 hover:underline"
+        >
+          ← Back to Home
+        </Link>
+      </article>
     </main>
   );
 }
