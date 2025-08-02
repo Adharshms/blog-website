@@ -1,8 +1,8 @@
-import './styles/globals.css';
+import './globals.css';
 
 export const metadata = {
-  title: 'My Blog',
-  description: 'A minimal blog',
+  title: 'DevBlog',
+  description: 'Minimal blog built with Next.js and Tailwind CSS',
 };
 
 export default function RootLayout({ children }) {

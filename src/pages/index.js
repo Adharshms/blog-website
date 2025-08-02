@@ -54,9 +54,7 @@ export default function Home({ posts }) {
                     />
                     <div style={styles.cardContent}>
                       <h4 style={styles.title}>{post.name}</h4>
-                      <p style={styles.meta}>
-                        {new Date(post.createdAt).toLocaleDateString()}
-                      </p>
+                      <p style={styles.meta}>{post.formattedDate}</p>
                     </div>
                   </a>
                 </Link>
@@ -79,9 +77,7 @@ export default function Home({ posts }) {
                   />
                   <div style={styles.cardContent}>
                     <h4 style={styles.title}>{post.name}</h4>
-                    <p style={styles.meta}>
-                      {new Date(post.createdAt).toLocaleDateString()}
-                    </p>
+                    <p style={styles.meta}>{post.formattedDate}</p>
                   </div>
                 </a>
               </Link>
@@ -98,6 +94,7 @@ export default function Home({ posts }) {
   );
 }
 
+// Inline styles
 const styles = {
   main: {
     backgroundColor: '#141414',
@@ -118,12 +115,12 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
   },
-  headerRight: {},
   logo: {
     fontSize: '2.5rem',
     color: '#e50914',
     margin: 0,
   },
+  headerRight: {},
   loginButton: {
     backgroundColor: '#e50914',
     color: '#fff',
@@ -214,17 +211,16 @@ export async function getStaticProps() {
   const res = await fetch('https://688d9d7da459d5566b12b8d8.mockapi.io/blog/articles');
   const data = await res.json();
 
-  // Pre-format date strings to avoid hydration mismatch
+  // Pre-format dates on server to avoid hydration issues
   const posts = data.map((post) => ({
     ...post,
-    formattedDate: new Date(post.createdAt).toLocaleDateString('en-GB'), // dd/mm/yyyy
+    formattedDate: new Date(post.createdAt).toLocaleDateString('en-GB'),
   }));
 
   return {
     props: {
       posts,
     },
-    revalidate: 60,
+    revalidate: 60, // ISR support
   };
 }
-
