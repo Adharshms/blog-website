@@ -2,7 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Optional: Your custom styles */
+/* ========== Global Styles ========== */
+
+html,
 body {
-  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #000; /* Netflix-style dark background */
+  color: #fff;
+}
+
+/* Scrollbar styling (optional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #e50914; /* Netflix red */
+  border-radius: 10px;
+}
+
+/* Button hover effect */
+button:hover {
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+/* Link styling */
+a {
+  color: #e50914;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
