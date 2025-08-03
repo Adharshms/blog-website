@@ -86,7 +86,7 @@ This project is open-source and free to use. MIT License.
 
 ## 🙌 Author
 
-Built with ❤️ by [Your Name](https://github.com/Adharshms)
+Built with ❤️ by [adharsh ](https://github.com/Adharshms)
 
 ```
  
