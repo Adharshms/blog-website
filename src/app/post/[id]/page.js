@@ -8,15 +8,68 @@ export default async function PostPage({ params }) {
   const post = await res.json();
 
   return (
-    <main style={{ padding: '20px', color: '#fff', backgroundColor: '#141414', minHeight: '100vh' }}>
-      <h1 style={{ fontSize: '2rem', color: '#e50914' }}>{post.name}</h1>
-      <p style={{ color: '#bbb', marginBottom: '20px' }}>
-        Posted on {new Date(post.createdAt).toLocaleDateString('en-GB')}
-      </p>
-      <img src={`https://picsum.photos/seed/${post.id}/800/400`} alt={post.name} style={{ maxWidth: '100%', borderRadius: '10px' }} />
-      <p style={{ marginTop: '20px', fontSize: '1.2rem', lineHeight: '1.6' }}>
-        {post.description || 'No description available.'}
-      </p>
+    <main style={styles.container}>
+      <article style={styles.article}>
+        <h1 style={styles.title}>{post.name}</h1>
+        <p style={styles.date}>
+          Posted on {new Date(post.createdAt).toLocaleDateString('en-GB')}
+        </p>
+        <img
+          src={`https://picsum.photos/seed/${post.id}/800/400`}
+          alt={post.name}
+          style={styles.image}
+        />
+        <div style={styles.content}>
+          <p>{post.description || dummyContent[0]}</p>
+          {dummyContent.slice(1).map((paragraph, idx) => (
+            <p key={idx}>{paragraph}</p>
+          ))}
+        </div>
+      </article>
     </main>
   );
 }
+
+const styles = {
+  container: {
+    padding: '1rem',
+    backgroundColor: '#141414',
+    color: '#ffffff',
+    minHeight: '100vh',
+    fontFamily: 'system-ui, sans-serif',
+    lineHeight: 1.7,
+  },
+  article: {
+    maxWidth: '768px',
+    margin: '0 auto',
+  },
+  title: {
+    fontSize: '2rem',
+    color: '#e50914',
+    marginBottom: '0.5rem',
+  },
+  date: {
+    color: '#aaa',
+    marginBottom: '1rem',
+    fontSize: '0.9rem',
+  },
+  image: {
+    width: '100%',
+    height: 'auto',
+    borderRadius: '12px',
+    marginBottom: '1.5rem',
+  },
+  content: {
+    fontSize: '1.05rem',
+    color: '#eee',
+  },
+};
+
+const dummyContent = [
+  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac erat vitae metus commodo feugiat. In hac habitasse platea dictumst.',
+  'Quisque sit amet dui nec velit pharetra gravida. Sed fermentum magna at dui viverra, non elementum nisl malesuada.',
+  'Aliquam erat volutpat. Donec non turpis nec mi tincidunt lobortis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae.',
+  'Proin sit amet lorem in augue fermentum tincidunt. Etiam a volutpat velit. Nulla at diam eget risus sollicitudin faucibus.',
+  'Mauris dapibus odio ac purus vestibulum, sed dignissim nisl dapibus. Integer facilisis porttitor neque, nec dignissim erat dapibus in.',
+  'Suspendisse potenti. Fusce vel leo nec elit dignissim tempus non sit amet erat.',
+];

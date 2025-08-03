@@ -23,30 +23,38 @@ export default function Home() {
   return (
     <main style={styles.main}>
       {/* Header */}
-      <nav style={styles.header}>
-        <div style={styles.headerLeft}>
-          <h1 style={styles.logo}>TravelStream</h1>
+      <header style={styles.header}>
+        <div style={styles.logoContainer}>
+          <h1 style={styles.logo}>TravelStories</h1>
         </div>
-        <div style={styles.headerRight}>
-          <Link href="/login" style={styles.loginButton}>
-            Login / Sign Up
+        <div style={styles.nav}>
+          <Link href="/login" style={styles.navButton}>
+            Login
+          </Link>
+          <Link href="/login" style={styles.navButtonOutline}>
+            Sign Up
           </Link>
         </div>
-      </nav>
+      </header>
 
-      {/* Hero */}
-      <section style={styles.hero}>
-        <div style={styles.heroText}>
-          <h2 style={styles.heroTitle}>Discover Breathtaking Places</h2>
-          <p style={styles.heroSubtitle}>Adventure. Nature. Culture. All in one place.</p>
-        </div>
-      </section>
+      {/* Hero Section */}
+     <section style={styles.hero}>
+  <div style={styles.heroOverlay}>
+    <h2 style={styles.heroTitle}>Explore the World Through Stories</h2>
+     
+  
+    <Link href="/login" style={styles.ctaButton}>
+      Start Your Journey
+    </Link>
+  </div>
+</section>
+
 
       {/* Category Sections */}
       {categories.map((cat, idx) => (
         <section key={cat} style={styles.categorySection}>
           <h3 style={styles.categoryTitle}>{cat}</h3>
-          <div style={styles.categoryRow}>
+          <div style={styles.grid}>
             {posts.slice(idx * 2, idx * 2 + 4).map((post) => (
               <Link key={post.id} href={`/post/${post.id}`} style={styles.card}>
                 <img
@@ -64,26 +72,6 @@ export default function Home() {
         </section>
       ))}
 
-      {/* Continue Reading */}
-      <section style={styles.categorySection}>
-        <h3 style={styles.categoryTitle}>Continue Reading</h3>
-        <div style={styles.categoryRow}>
-          {posts.slice(0, 3).map((post) => (
-            <Link key={post.id + 'continue'} href={`/post/${post.id}`} style={styles.card}>
-              <img
-                src={`https://picsum.photos/seed/continue${post.id}/400/250`}
-                alt={post.name}
-                style={styles.image}
-              />
-              <div style={styles.cardContent}>
-                <h4 style={styles.title}>{post.name}</h4>
-                <p style={styles.meta}>{post.formattedDate}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
       {/* Footer */}
       <footer style={styles.footer}>
         <p>© {new Date().getFullYear()} TravelStream. All rights reserved.</p>
@@ -94,110 +82,178 @@ export default function Home() {
 
 const styles = {
   main: {
-    backgroundColor: '#141414',
+    backgroundColor: '#111',
     color: '#fff',
-    fontFamily: 'Helvetica Neue, sans-serif',
-    minHeight: '100vh',
+    fontFamily: `'Inter', sans-serif`,
     paddingBottom: '40px',
   },
   header: {
-    padding: '30px 40px',
     backgroundColor: '#000',
-    borderBottom: '2px solid #e50914',
+    padding: '20px 5%',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    borderBottom: '2px solid #e50914',
+    flexWrap: 'wrap',
   },
-  headerLeft: {
-    display: 'flex',
-    alignItems: 'center',
+  logoContainer: {
+    flex: '1 1 auto',
   },
   logo: {
-    fontSize: '2.5rem',
     color: '#e50914',
+    fontSize: '2rem',
     margin: 0,
   },
-  headerRight: {},
-  loginButton: {
+  nav: {
+    display: 'flex',
+    gap: '10px',
+  },
+  navButton: {
+    padding: '10px 18px',
     backgroundColor: '#e50914',
     color: '#fff',
-    padding: '10px 20px',
-    borderRadius: '5px',
     textDecoration: 'none',
-    fontWeight: 'bold',
+    borderRadius: '6px',
+    fontWeight: 600,
+  },
+  navButtonOutline: {
+    padding: '10px 18px',
+    backgroundColor: 'transparent',
+    color: '#e50914',
+    border: '2px solid #e50914',
+    textDecoration: 'none',
+    borderRadius: '6px',
+    fontWeight: 600,
   },
   hero: {
-    backgroundImage: 'url(https://picsum.photos/seed/travelhero/1200/500)',
+    position: 'relative',
+    height: '60vh',
+    backgroundImage: 'url(https://picsum.photos/seed/heroBanner/1200/700)',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    height: '50vh',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: '40px',
   },
-  heroText: {
+  overlay: {
     backgroundColor: 'rgba(0,0,0,0.6)',
-    padding: '20px 40px',
+    padding: '30px 20px',
     borderRadius: '10px',
     textAlign: 'center',
+    maxWidth: '700px',
   },
   heroTitle: {
     fontSize: '2.5rem',
-    margin: 0,
-    color: '#fff',
+    fontWeight: 700,
+    marginBottom: '15px',
   },
   heroSubtitle: {
     fontSize: '1.2rem',
-    marginTop: '10px',
     color: '#ccc',
+    marginBottom: '25px',
+  },
+  ctaButton: {
+    backgroundColor: '#e50914',
+    color: '#fff',
+    padding: '12px 24px',
+    fontSize: '1rem',
+    fontWeight: 600,
+    textDecoration: 'none',
+    borderRadius: '8px',
+    transition: 'background 0.3s ease',
   },
   categorySection: {
-    padding: '0 40px',
-    marginBottom: '30px',
+    padding: '40px 5%',
   },
   categoryTitle: {
-    fontSize: '1.5rem',
-    marginBottom: '10px',
+    fontSize: '1.8rem',
     borderLeft: '5px solid #e50914',
-    paddingLeft: '10px',
+    paddingLeft: '12px',
+    marginBottom: '25px',
   },
-  categoryRow: {
-    display: 'flex',
-    overflowX: 'auto',
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
     gap: '20px',
-    paddingBottom: '10px',
   },
   card: {
-    flex: '0 0 auto',
-    width: '250px',
     backgroundColor: '#1e1e1e',
     borderRadius: '10px',
     overflow: 'hidden',
     textDecoration: 'none',
     color: 'inherit',
+    transition: 'transform 0.3s, box-shadow 0.3s',
   },
   image: {
     width: '100%',
-    height: '150px',
+    height: '160px',
     objectFit: 'cover',
   },
   cardContent: {
-    padding: '10px 15px',
+    padding: '12px 15px',
   },
   title: {
-    fontSize: '1.1rem',
-    marginBottom: '5px',
-    color: '#fff',
+    fontSize: '1.2rem',
+    fontWeight: 600,
   },
   meta: {
-    fontSize: '0.8rem',
-    color: '#bbb',
+    fontSize: '0.85rem',
+    color: '#aaa',
+    marginTop: '5px',
   },
   footer: {
     textAlign: 'center',
     color: '#888',
-    padding: '20px 0',
+    padding: '30px 0',
     fontSize: '0.9rem',
   },
+
+  hero: {
+  position: 'relative',
+  backgroundImage: 'url(https://picsum.photos/seed/travelhero/1600/700)',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  height: '70vh',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  textAlign: 'center',
+  borderBottom: '4px solid #e50914',
+},
+
+heroOverlay: {
+  background: 'linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.6))',
+  padding: '40px',
+  borderRadius: '12px',
+  color: '#fff',
+  maxWidth: '90%',
+  width: '600px',
+  boxShadow: '0 8px 20px rgba(0,0,0,0.5)',
+},
+
+heroTitle: {
+  fontSize: '2.8rem',
+  marginBottom: '20px',
+  fontWeight: 'bold',
+  lineHeight: '1.3',
+},
+
+heroSubtitle: {
+  fontSize: '1.2rem',
+  marginBottom: '25px',
+  color: '#ccc',
+},
+
+ctaButton: {
+  display: 'inline-block',
+  padding: '14px 28px',
+  backgroundColor: '#000000ff',
+  color: '#fff',
+  borderRadius: '8px',
+  fontSize: '1rem',
+  fontWeight: 'bold',
+  textDecoration: 'none',
+  transition: 'background-color 0.3s, transform 0.2s',
+},
+
 };
