@@ -1,40 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+ 
+ 🌍 Travel Blog Landing Page - Next.js
 
-## Getting Started
+A professional single-page blog landing layout built with **Next.js App Router**. This page features a beautiful **hero banner**, **call-to-action (CTA)** button, and mobile-friendly design. Perfect for storytelling, personal blogging, or a travel journal.
 
-First, run the development server:
+---
+
+ ✨ Features
+
+- ⚡ Built with **Next.js App Router**
+- 🎨 Responsive and modern **hero section** with background image
+- 🔗 CTA button linking to `/signup`
+- 🌓 Dark mode aesthetic with clean typography
+- 📱 Fully **mobile-friendly**
+- 🔧 Easy to customize with plain CSS-in-JS styling
+
+---
+
+ 🖼 Live Preview
+
+**(Optional)** Deploy it using [Vercel](https://blog-website-a8sd-qrox9w351-adharshms-projects.vercel.app/) and link your deployment here:
+
+```
+
+🔗 [https://your-username.vercel.app/](https://your-username.vercel.app/)
+
+````
+
+---
+
+## 🛠️ Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/nextjs-blog-hero.git
+cd nextjs-blog-hero
+````
+
+### 2. Install Dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open your browser and visit: `http://localhost:3000`
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+---
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## 📁 Folder Structure
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```
+/app
+ └── /page.js        → Main landing page with hero section
+ └── /signup         → Signup route (optional)
+/public
+ └── (optional images)
+/styles
+ └── (if using CSS modules)
+/README.md
+/next.config.js
+/package.json
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧱 Built With
 
-To learn more about Next.js, take a look at the following resources:
+* [Next.js 15 App Router](https://nextjs.org/docs/app)
+* [React](https://reactjs.org/)
+* [Vercel](https://vercel.com) – for deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📄 License
 
-## Deploy on Vercel
+This project is open-source and free to use. MIT License.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+## 🙌 Author
+
+Built with ❤️ by [Your Name](https://github.com/Adharshms)
+
+```
+ 
+
+ 
