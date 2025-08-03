@@ -1,4 +1,6 @@
-import { useRouter } from 'next/router';
+'use client';
+
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function LoginPage() {
@@ -15,92 +17,33 @@ export default function LoginPage() {
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.card}>
-        <h2 style={styles.title}>Sign In</h2>
+    <div className="h-screen bg-cover bg-center flex justify-center items-center p-4"
+         style={{ backgroundImage: "url('https://picsum.photos/seed/travelblog/1600/900')" }}>
+      <div className="bg-black bg-opacity-80 p-8 rounded-lg w-full max-w-sm text-center shadow-lg">
+        <h2 className="text-white text-2xl mb-6">Sign In</h2>
         <form onSubmit={handleLogin}>
-          <label htmlFor="email" style={styles.label}>Email</label>
+          <label htmlFor="email" className="block text-gray-300 text-left mb-2 text-sm">Email</label>
           <input
             id="email"
-            style={styles.input}
+            className="w-full p-3 mb-4 rounded bg-gray-800 text-white border border-gray-700 focus:outline-none"
             type="email"
             placeholder="Email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <button style={styles.button} type="submit">Login</button>
+          <button
+            type="submit"
+            className="w-full bg-red-600 text-white py-3 rounded font-bold text-lg hover:bg-red-700 transition">
+            Login
+          </button>
         </form>
-        <button onClick={handleGuest} style={styles.guest}>
+        <button
+          onClick={handleGuest}
+          className="mt-4 text-gray-300 underline text-sm hover:text-white transition">
           Continue as Guest
         </button>
       </div>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    height: '100vh',
-    background: 'url(https://picsum.photos/seed/travelblog/1600/900) no-repeat center center',
-    backgroundSize: 'cover',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: '20px',
-  },
-  card: {
-    backgroundColor: 'rgba(0,0,0,0.8)',
-    padding: '40px 30px',
-    borderRadius: '10px',
-    width: '100%',
-    maxWidth: '340px',
-    textAlign: 'center',
-    boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
-  },
-  title: {
-    color: '#fff',
-    marginBottom: '25px',
-    fontSize: '28px',
-  },
-  label: {
-    display: 'block',
-    color: '#aaa',
-    textAlign: 'left',
-    marginBottom: '6px',
-    fontSize: '14px',
-  },
-  input: {
-    width: '100%',
-    padding: '12px',
-    marginBottom: '20px',
-    borderRadius: '4px',
-    border: '1px solid #333',
-    backgroundColor: '#222',
-    color: '#fff',
-    fontSize: '14px',
-    outline: 'none',
-  },
-  button: {
-    width: '100%',
-    padding: '12px',
-    backgroundColor: '#e50914',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '4px',
-    fontWeight: 'bold',
-    fontSize: '16px',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-  },
-  guest: {
-    marginTop: '18px',
-    color: '#bbb',
-    background: 'none',
-    border: 'none',
-    cursor: 'pointer',
-    textDecoration: 'underline',
-    fontSize: '14px',
-    transition: 'color 0.2s ease',
-  },
-};
