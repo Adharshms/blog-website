@@ -25,8 +25,7 @@ body {
   border-radius: 10px;
 }
 
-/* Button hover effect */
-button:hover {
+ button:hover {
   opacity: 0.9;
   transition: opacity 0.2s;
 }
@@ -38,4 +37,72 @@ a {
 }
 a:hover {
   text-decoration: underline;
+}
+@keyframes zoomFade {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.button {
+  display: inline-block;
+  padding: 14px 28px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #e50914;
+  transform: scale(1.05);
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+/* styles.css */
+
+.button {
+  display: inline-block;
+  padding: 14px 28px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #e50914;
+  transform: scale(1.05);
+}
+
+.card {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
